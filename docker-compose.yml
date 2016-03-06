@@ -1,0 +1,12 @@
+version: '2'
+services:
+  mesos:
+    image: suizman/void:latest
+    network_mode: host
+    command: mesos local --num_slaves=25
+    privileged: true
+  ui:
+    image: capgemini/mesos-ui:standalone-0.1.2
+    network_mode: host
+    environment:
+      - MESOS_ENDPOINT=http://127.0.0.1:5050
